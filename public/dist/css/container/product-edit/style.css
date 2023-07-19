@@ -1,3 +1,21 @@
+.button {
+  display: flex;
+  flex-direction: row;
+  border-radius: 2px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: bold;
+  color: blue;
+  margin: 16px;
+}
+
+.product {
+  border: 1px solid #ddd;
+  outline: 3px, double, grey;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -6,8 +24,6 @@
 }
 .form__title {
   font-size: 20px;
-  font-weight: bold;
-  color: blue;
   padding-bottom: 16px;
   border-bottom: 1px solid #ddd;
 }
@@ -18,7 +34,7 @@
 }
 .form__field_sub {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .form__content {
   display: grid;
@@ -36,24 +52,22 @@
   border: 1px solid #ddd;
   padding: 8px;
 }
-.form__button {
+.form__button_success {
   border: 1px solid #ddd;
   padding: 8px;
-  border-radius: 20px;
   background-color: blue;
   color: white;
+}
+.form__button_danger {
+  border: 1px solid #ddd;
+  padding: 8px;
+  background-color: red;
 }
 
 main {
   display: flex;
   flex-direction: column;
   gap: 10px;
-}
-
-.user-list li {
-  padding-right: 15px;
-  padding-top: 5px;
-  padding-bottom: 5px;
 }
 
 /*# sourceMappingURL=style.css.map */

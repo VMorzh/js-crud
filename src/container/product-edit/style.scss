@@ -1,5 +1,21 @@
 @use '../../lib/service.scss' as s;
 
+.button{
+    display: flex;
+    flex-direction: row;
+    border-radius: 2px;
+}
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+    margin: s.space(4);
+}
+.product {
+    border: 1px solid s.color('light');
+    outline: 3px, double, grey;
+}
+
 .form {
     display: flex;
     flex-direction: column;
@@ -7,9 +23,8 @@
     gap: s.space(8);
 
 &__title {
-    font-size: 20px;
-    font-weight: bold;
-    color: blue;
+    font-size: 20px;  
+   
     padding-bottom: s.space(4);
     border-bottom: 1px solid s.color('light');
 }
@@ -20,7 +35,7 @@
 }
 &__field_sub {
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr 1fr; 
 }
 &__content {
     display: grid;
@@ -42,12 +57,17 @@
     padding: s.space(2);
 }
 
-&__button {
+&__button_success {
     border: 1px solid s.color('light');
-    padding: s.space(2);
-    border-radius: 20px;
+    padding: s.space(2);    
     background-color: blue;
     color: white;
+}
+&__button_danger {
+    border: 1px solid s.color('light');
+    padding: s.space(2);    
+    background-color: red;
+    
 }
 }
 
@@ -57,10 +77,10 @@ main{
     gap: 10px;
 }
 
-.user-list {
-    li {
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-}
+// .user-list {
+//     li {
+//         padding-right: 15px;
+//         padding-top: 5px;
+//         padding-bottom: 5px;
+//     }
+// }

@@ -1,47 +1,43 @@
-.form {
+.product {
   display: flex;
   flex-direction: column;
   padding: 16px;
   gap: 32px;
 }
-.form__title {
+.product__name {
   font-size: 20px;
   font-weight: bold;
-  color: blue;
-  padding-bottom: 16px;
+  padding-bottom: 24px;
   border-bottom: 1px solid #ddd;
 }
-.form__subtitle {
+.product__description {
   font-size: 18px;
-  font-weight: bold;
-  padding-bottom: 16px;
+  padding-bottom: 32px;
 }
-.form__field_sub {
+.product__field_sub {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
-.form__content {
+.product__content {
   display: grid;
-  gap: 24px;
+  gap: 8px;
 }
-.form__field {
+.product__field {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-.form__label {
+.product__label {
   font-size: 14px;
 }
-.form__input {
+.product__input {
   border: 1px solid #ddd;
   padding: 8px;
 }
-.form__button {
+.product__edit {
   border: 1px solid #ddd;
   padding: 8px;
   border-radius: 20px;
-  background-color: blue;
-  color: white;
 }
 
 main {

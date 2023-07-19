@@ -1,22 +1,20 @@
 @use '../../lib/service.scss' as s;
 
-.form {
+.product {
     display: flex;
     flex-direction: column;
     padding: s.space(4);
     gap: s.space(8);
 
-&__title {
+&__name {
     font-size: 20px;
-    font-weight: bold;
-    color: blue;
-    padding-bottom: s.space(4);
+    font-weight: bold;  
+    padding-bottom: s.space(6);
     border-bottom: 1px solid s.color('light');
 }
-&__subtitle {
+&__description {
     font-size: 18px;
-    font-weight: bold;
-    padding-bottom: s.space(4);
+        padding-bottom: s.space(8);
 }
 &__field_sub {
     display: grid;
@@ -24,7 +22,7 @@
 }
 &__content {
     display: grid;
-    gap: s.space(6);
+    gap: s.space(2);
 }
 
 &__field {
@@ -42,13 +40,13 @@
     padding: s.space(2);
 }
 
-&__button {
+&__edit {
     border: 1px solid s.color('light');
     padding: s.space(2);
     border-radius: 20px;
-    background-color: blue;
-    color: white;
+   
 }
+
 }
 
 main{
