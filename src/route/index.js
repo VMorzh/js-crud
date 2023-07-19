@@ -18,6 +18,7 @@ class Product {
     }
   }
   static getList = () => this.#list
+  checkId = (id) => this.id === id
 
   static add = (product) => {
     this.#list.push(product)
@@ -25,15 +26,16 @@ class Product {
   static getById = (id) =>
     this.#list.find((product) => product.id === id)
 
-  static updateById = (id, data) => {
-    const product = this.getById(id)
-    if (product) {
-      this.update(product, data)
-      return true
-    } else {
-      return false
-    }
-  }
+  // static updateById = (id, data) => {
+  //   const product = this.getById(id)
+  //   if (product) {
+  //     this.update(product, data)
+  //     return true
+  //   } else {
+  //     return false
+  //   }
+  // }
+
   static deleteById = (id) => {
     const index = this.#list.findIndex(
       (product) => product.id === id,
@@ -45,6 +47,26 @@ class Product {
       return false
     }
   }
+
+  static updateById = (id, data) => {
+    const product = this.getById(id)
+    const { name, price, description } = data
+
+    if (product) {
+      if (name) {
+        product.name = name
+      } else if (price) {
+        product.price = price
+      } else if (description) {
+        product.description = description
+      }
+
+      return true
+    } else {
+      return false
+    }
+  }
+
   static update = (name, { product }) => {
     if (name) {
       product.name = name
@@ -171,7 +193,7 @@ router.get('/product-delete', function (req, res) {
 
   res.render('product-alert', {
     style: 'product-alert',
-    info: result ? 'Товар видалено' : 'Сталась помилка',
+    info: 'Товар видалено',
   })
 })
 // ================================================================

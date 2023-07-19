@@ -8,6 +8,7 @@
   <section>
     <div class="form">
       <h1 class='form__title'>Інформація про товар</h1>
+      {{#with data}}
       <form method='POST' action='/product-edit'>
         <div class="form__content">
           <b class="form__subtitle">Інформация про товар</b>
@@ -30,7 +31,6 @@
             <input type="description" name="description" class="form__input">
             <h5>відображается у картці товару</h5>
           </div>
-
           <div class="button">
             <div>
               <button class="form__button_success">Зберегти</button>
@@ -39,9 +39,8 @@
               <button class="form__button_danger">Видалити</button>
             </div>
           </div>
-
-
       </form>
+      {{/with }}
     </div>
   </section>
 
