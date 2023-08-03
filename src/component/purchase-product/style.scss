@@ -1,6 +1,5 @@
 @use '../../lib/service.scss' as s;
 
-
 .product-card {
 border-radius: 10px;
 border: 1px solid s.color(border);
@@ -17,7 +16,7 @@ width: 100%;
 }
 
 .product-card__title {
-font-size: 20px;
+font-size: 24px;
 font-weight: bold;
 }
 

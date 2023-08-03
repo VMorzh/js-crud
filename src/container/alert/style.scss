@@ -1,55 +1,51 @@
 @use '../../lib/service.scss' as s;
 
-.form {
-    display: flex;
-    flex-direction: column;
-    padding: s.space(4);
-    gap: s.space(8);
+.card {
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: s.space(5);
+   border-radius: s.space(4);
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+ background-color: #fff;
+
+
+&__header {
+flex-grow: 1;
+}
 
 &__title {
-    font-size: 20px;
+    font-size: 24px;
     font-weight: bold;
-    padding-bottom: s.space(1);
-    border-bottom: 1px solid s.color('light');
+    margin: 0;
 }
 
-&__content {
-    display: grid;
-    gap: s.space(6);
+&__subtitle {
+    font-size: 18px;
+    margin-top: 8px;
+    color: #666666;
 }
 
-&__field {
-    display: flex;
-    flex-direction:column;
-    gap: s.space(2);
-}
-
-&__label {
-    font-size: 14px;
-}
-
-&__input {
-    border: 1px solid s.color('light');
-    padding: s.space(2);
-}
+// &__field {
+//     display: flex;
+//     flex-direction:column;
+//     gap: s.space(2);
+// }
 
 &__button {
-    border: 1px solid s.color('light');
-    padding: s.space(2);
-    border-radius: 20px;
-}
+    background-color: blue;
+    color: #ffffff;
+    border:none;
+    border-radius: 5px ;
+    padding: 10px 20px;
+    font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+ &__hover {
+    background-color:darkblue;
+ }
 }
 
-main{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
 }
 
-.user-list {
-    li {
-        padding-right: 15px;
-        padding-top: 5px;
-        padding-bottom: 5px;
-    }
-}
+

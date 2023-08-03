@@ -1,3 +1,5 @@
+@use '../../lib/service.scss' as s;
+
 .heading {
     display: flex;
     flex-direction: column;
@@ -5,11 +7,12 @@
 }
 
 .heading__title {
-    font-size: 24px;
+    font-size: 28px;
     color: #000;
 }
 
 .heading__info  { 
     font-size: 16px;
+    font-weight: bold;
     color: #000;
 }
