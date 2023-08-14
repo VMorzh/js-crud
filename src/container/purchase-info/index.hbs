@@ -6,20 +6,20 @@
 <main class="main">
   {{#with data}}
   <form method="POST" action="/purchase-submit?id={{id}}" class="form-card">
-    {{>heading title="Baшe замовлення"}}
+    {{>heading title="Інформація по замовленню"}}
 
-    <ul class="cart">
+    {{!-- <ul class="cart">
       {{#each cart}}
       <li class="cart__item">
         <span>{{text}}</span>
         <span>{{price}} грн.</span>
       </li>
       {{/each}}
-    </ul>
+    </ul> --}}
 
     {{>divider}}
 
-    {{>heading title="Оформлення замовлення"}}
+    {{!-- {{>heading title="Оформлення замовлення"}} --}}
 
     {{>field label="Iм'я" name="firstname"}}
 
@@ -48,7 +48,7 @@
       Всього: {{totalPrice}} грн. (+{{bonus}} грн. на бонусний рахунок)
     </strong>
 
-    {{>button text="Оформити замовлення"}}
+    {{>button text="Зминити данні"}}
 
   </form>
 

@@ -6,7 +6,7 @@
 
 .heading__title {
   font-size: 28px;
-  color: #000;
+  color: blue;
 }
 
 .heading__info {
@@ -85,6 +85,12 @@
 .field__input {
   border: 1px solid #ddd;
   padding: 8px;
+  border-radius: 10px;
+}
+
+.field--disabled {
+  position: absolute;
+  display: none;
 }
 
 .product-info__divider {
@@ -97,7 +103,7 @@
   background-color: blue;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 10px 20px;
   font-size: 16px;
   cursor: pointer;
