@@ -513,30 +513,102 @@ router.get('/purchase-info', function (req, res) {
 // ==========================================================
 // router.get Створює нам один ентпоїнт
 // ↙️ тут вводимо шлях (PATH) до сторінки
-router.get('/purchase-details', function (req, res) {
+router.get('/purchase-edit', function (req, res) {
   const id = Number(req.query.id)
-  const purchase = Purchase.updateById(id)
 
-  // res.render генерує нам HTML сторінку
-  // ↙️ cюди вводимо назву файлу з сontainer
-  res.render('purchase-details', {
-    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
-    style: 'purchase-details',
+  const purchase = Purchase.getById(id)
 
-    title: 'Зміна данних',
+  if (!purchase) {
+    // Якщо товар з таким id не знайдено, відображаємо повідомлення про помилку
+    res.render('alert', {
+      style: 'alert',
+      component: ['button', 'heading'],
 
-    data: {
-      id: purchase.id,
-      firstname: purchase.firstname,
-      lastname: purchase.lastname,
+      isError: true,
+      title: 'Помилка',
+      info: 'Замовлення з таким ID не знайдено',
+    })
+  } else {
+    // Якщо товар знайдено, передаємо його дані у шаблон product-edit
+    res.render('purchase-edit', {
+      style: 'purchase-edit',
+      component: ['heading', 'divider', 'field', 'button'],
 
-      phone: purchase.phone,
-      email: purchase.email,
-      // delivery: purchase.delivery,
-    },
-  })
+      title: 'Зміна данних замовлення',
+
+      data: {
+        id: purchase.id,
+        firstname: purchase.firstname,
+        lastname: purchase.lastname,
+
+        phone: purchase.phone,
+        email: purchase.email,
+        delivery: purchase.delivery,
+      },
+    })
+  }
   // ↑↑ сюди вводимо JSON дані
 })
+// =========================================================
+router.post('/purchase-edit', function (req, res) {
+  const id = Number(req.query.id)
+  let { firstname, lastname, phone, email, delivery } =
+    req.body
 
+  const purchase = Purchase.getById(id)
+
+  console.log(purchase)
+
+  if (purchase) {
+    const newPurchase = Purchase.updateById(id, {
+      firstname,
+      lastname,
+      phone,
+      email,
+      delivery,
+    })
+
+    console.log(newPurchase)
+    // Якщо оновлення вдалося, відображаємо повідомлення про успіх
+    if (newPurchase) {
+      res.render('alert', {
+        style: 'alert',
+        component: ['button', 'heading'],
+
+        data: {
+          link: '/purchase-list',
+          title: 'Успішне виконання дії',
+          info: 'Товар успішно оновлено',
+        },
+      })
+    } else {
+      // Якщо оновлення не вдалося (наприклад, товару з таким id не існує),
+      // відображаємо повідомлення про помилку
+      res.render('alert', {
+        style: 'alert',
+        component: ['button', 'heading'],
+
+        data: {
+          link: '/purchase-list',
+          title: 'Помилка',
+          info: 'Не вдалося оновити товар',
+        },
+      })
+    }
+  } else {
+    // Якщо оновлення не вдалося (наприклад, товару з таким id не існує),
+    // відображаємо повідомлення про помилку
+    res.render('alert', {
+      style: 'alert',
+      component: ['button', 'heading'],
+
+      data: {
+        link: '/purchase-list',
+        title: 'Помилка',
+        info: 'Не вдалося оновити товар',
+      },
+    })
+  }
+})
 // Підключаємо роутер до бек-енду
 module.exports = router
