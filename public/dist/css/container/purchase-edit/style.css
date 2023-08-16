@@ -134,4 +134,9 @@
   display: flex;
 }
 
+.purchase-edit {
+  display: grid;
+  padding-left: 15px;
+}
+
 /*# sourceMappingURL=style.css.map */
