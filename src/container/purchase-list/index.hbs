@@ -2,33 +2,37 @@
 Це код container файлу для index сторінки,
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
 }}
+{{>heading title="Мої замовлення"}}
 
-<section class='purchase-list'>
+<section class="purchase-list">
+
   {{#with data.purchases}}
   {{#each list}}
   <a href='/purchase-info?id={{id}}'>
     {{!-- діви з виводами айді, товара, ціни та бонуса --}}
-    <div class='purchase-item'>
+    <div class="purchase-item">
       <div class='purchase-item__block'>
-        <span class='title'>ID: {{id}}</span>
+        <span class='title'>ID:</span>
+        <span class='text'>{{id}}</span>
       </div>
       <div class='purchase-item__block'>
-        <span class='title'>Товари</span>
-        <span class='text'>{{list}}</span>
+        <span class='title'>Товар:</span>
+        <span class='text'>{{product}}</span>
       </div>
       <div class='purchase-item__block'>
-        <span class='title'>Сума замовлення</span>
+        <span class='title'>Сума замовлення:</span>
         <span class='text'>{{totalPrice}} грн</span>
       </div>
       <div class='purchase-item__block'>
-        <span class='title'>Нараховані бонуси</span>
+        <span class='title'>Нараховані бонуси:</span>
         <span class='text'>{{bonus}} грн</span>
       </div>
     </div>
   </a>
-  {{> divider}}
   {{/each}}
+
   {{/with}}
+  {{> divider}}
 </section>
 
 {{!

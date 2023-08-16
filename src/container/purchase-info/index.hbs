@@ -3,9 +3,10 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
 }}
 <section class="purchase-info">
+  {{>heading title="Інформація по замовленню"}}
   <div class='form'>
     {{#with data}}
-    <div class='purchase-item block'>
+    <div class='purchase-item__block'>
       <span class='title'>ID:</span>
       <span class='text'>{{id}}</span>
     </div>
@@ -20,7 +21,45 @@
         <span class='text'>{{lastname}}</span>
       </div>
     </div>
+    <div class='purchase-item'>
+      <div class="purchase-item__block">
+        <span class='title'>Телефон:</span>
+        <span class='text'>{{phone}}</span>
+      </div>
+      <div class='purchase-item__block'>
+        <span class='title'>Email:</span>
+        <span class='text'>{{email}}</span>
+      </div>
+    </div>
+    <div class='purchase-item__block'>
+      <span class='title'>Адреса доставки:</span>
+      <span class='text'>{{delivery}}</span>
+    </div>
+    <div class='purchase-item__block'>
+      <span class='title'>Назва товару:</span>
+      <span class='text'>{{product.title}}</span>
+    </div>
+    {{> divider}}
+    <div class='purchase-item'>
+      <div class="purchase-item__block">
+        <span class='title'>Вартість товарів:</span>
+        <span class='text'>{{productPrice}}</span>
+      </div>
+      <div class='purchase-item__block'>
+        <span class='title'>Вартість доставки:</span>
+        <span class='text'>{{deliveryPrice}}</span>
+      </div>
+      <div class="purchase-item__block">
+        <span class='title'>Сума до сплати:</span>
+        <span class='text'>{{totalPrice}}</span>
+      </div>
+      <div class='purchase-item__block'>
+        <span class='title'>Нараховані бонуси:</span>
+        <span class='text'>{{bonus}}</span>
+      </div>
+    </div>
   </div>
+  {{>button text="Змінити данні"}}
   {{/with}}
 </section>
 
@@ -31,23 +70,17 @@
   --}}
 
 
-  {{!-- <main class="main">
+  {{!-- <section class="purchase-info">
     {{#with data}}
-    <form class="form-card">
+
+    <form class="form">
       {{>heading title="Інформація по замовленню"}}
 
-      <ul class="cart">
-        {{#each cart}}
-        <li class="cart__item">
-          <span>{{text}}</span>
-          <span>{{price}} грн.</span>
-        </li>
-        {{/each}}
-      </ul>
-
+      <div class='purchase-item block'>
+        <span class='title'>ID:</span>
+        <span class='text'>{{id}}</span>
+      </div>
       {{>divider}}
-
-      {{>heading title="Оформлення замовлення"}}
 
       {{>field label="Iм'я" name="firstname"}}
 
@@ -57,18 +90,11 @@
 
       {{>field label="Поштa" name="email"}}
 
-      {{>field label="Коментар" name="comment"}}
-
-      {{>field label="Списати бонуси" name="bonus"}}
-
-      {{>field label="Промо-код" name="promocode"}}
-
       {{>divider}}
 
-      {{>field value=totalPrice name="totalPrice" disabled=true}}
-      {{>field value=productPrice name="productPrice" disabled=true}}
-      {{>field value=deliveryPrice name="deliveryPrice" disabled=true}}
-      {{>field value=amount name="amount" disabled=true}}
+      {{>field value=delivery label="Адреса доставки:" }}
+      {{>field name=product label="Назва товару" }}
+
 
       {{>divider}}
 
@@ -81,4 +107,4 @@
     </form>
 
     {{/with}}
-  </main> --}}
+  </section> --}}

@@ -142,16 +142,24 @@ class Purchase {
     const newPurchase = new Purchase(...arg)
 
     this.#list.push(newPurchase)
+    //оновлення об'єкту product після успішної покупки
+    newPurchase.product.amount -= newPurchase.amount
+
     return newPurchase
   }
 
   static getList = () => {
-    return Purchase.#list.reverse()
-    // .map(({...}) => {...} )
+    return Purchase.#list.reverse().map((purchase) => ({
+      id: purchase.id,
+      product: purchase.product.title,
+      totalPrice: purchase.totalPrice,
+      bonus: Purchase.calcBonusAmount(purchase.totalPrice),
+    }))
   }
 
   static getById = (id) => {
-    return Purchase.#list.find((item) => item.ad === id)
+    return this.#list.find((item) => item.id === id)
+    // return Purchase.#list.find((item) => item.ad === id)
   }
 
   static updateById = (id, data) => {
@@ -496,13 +504,39 @@ router.get('/purchase-info', function (req, res) {
       productPrice: purchase.productPrice,
       deliveryPrice: purchase.deliveryPrice,
       totalPrice: purchase.totalPrice,
-
       bonus: bonus,
     },
   })
   // ↑↑ сюди вводимо JSON дані
 })
 // ==========================================================
+// ==========================================================
+// router.get Створює нам один ентпоїнт
+// ↙️ тут вводимо шлях (PATH) до сторінки
+router.get('/purchase-details', function (req, res) {
+  const id = Number(req.query.id)
+  const purchase = Purchase.updateById(id)
+
+  // res.render генерує нам HTML сторінку
+  // ↙️ cюди вводимо назву файлу з сontainer
+  res.render('purchase-details', {
+    // вказуємо назву папки контейнера, в якій знаходяться наші стилі
+    style: 'purchase-details',
+
+    title: 'Зміна данних',
+
+    data: {
+      id: purchase.id,
+      firstname: purchase.firstname,
+      lastname: purchase.lastname,
+
+      phone: purchase.phone,
+      email: purchase.email,
+      // delivery: purchase.delivery,
+    },
+  })
+  // ↑↑ сюди вводимо JSON дані
+})
 
 // Підключаємо роутер до бек-енду
 module.exports = router
