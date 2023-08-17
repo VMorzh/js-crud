@@ -3,14 +3,10 @@
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
 }}
 
-<div class="card">
-  <div class="card__header">
-    <h2 class="card__title">{{data.message}}</h2>
-    <h3 class="card__subtitle">{{data.info}}</h3>
-  </div>
-  <a href="{{data.link}}" class="card__button">Повернутись назад</a>
+<div class="field {{#if disabled}}field--disabled{{/if}}">
+  <label for="{{name}}" class="field__label">{{label}}</label>
+  <input type="{{#if type}}{{type}}{{/if}}" value="{{#if value}}{{value}}{{/if}}" name="{{name}}" class=" field__input">
 </div>
-
 
 
 

@@ -1,0 +1,51 @@
+@use '../../lib/service.scss' as s;
+
+.card {
+   display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: s.space(5);
+   border-radius: s.space(4);
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+ background-color: #fff;
+
+
+&__header {
+flex-grow: 1;
+}
+
+&__title {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 0;
+}
+
+&__subtitle {
+    font-size: 18px;
+    margin-top: 8px;
+    color: #666666;
+}
+
+// &__field {
+//     display: flex;
+//     flex-direction:column;
+//     gap: s.space(2);
+// }
+
+&__button {
+    background-color: blue;
+    color: #ffffff;
+    border:none;
+    border-radius: 5px ;
+    padding: 10px 20px;
+    font-size: 16px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+ &__hover {
+    background-color:darkblue;
+ }
+}
+
+}
+
+
