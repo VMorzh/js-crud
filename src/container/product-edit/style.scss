@@ -1,0 +1,86 @@
+@use '../../lib/service.scss' as s;
+
+.button{
+    display: flex;
+    flex-direction: row;
+    border-radius: 2px;
+}
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: blue;
+    margin: s.space(4);
+}
+.product {
+    border: 1px solid s.color('light');
+    outline: 3px, double, grey;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    padding: s.space(4);
+    gap: s.space(8);
+
+&__title {
+    font-size: 20px;  
+   
+    padding-bottom: s.space(4);
+    border-bottom: 1px solid s.color('light');
+}
+&__subtitle {
+    font-size: 18px;
+    font-weight: bold;
+    padding-bottom: s.space(4);
+}
+&__field_sub {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr; 
+}
+&__content {
+    display: grid;
+    gap: s.space(6);
+}
+
+&__field {
+    display: flex;
+    flex-direction:column;
+    gap: s.space(2);
+}
+
+&__label {
+    font-size: 14px;
+}
+
+&__input {
+    border: 1px solid s.color('light');
+    padding: s.space(2);
+}
+
+&__button_success {
+    border: 1px solid s.color('light');
+    padding: s.space(2);    
+    background-color: blue;
+    color: white;
+}
+&__button_danger {
+    border: 1px solid s.color('light');
+    padding: s.space(2);    
+    background-color: red;
+    
+}
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+// .user-list {
+//     li {
+//         padding-right: 15px;
+//         padding-top: 5px;
+//         padding-bottom: 5px;
+//     }
+// }
