@@ -251,8 +251,8 @@ router.get('/spotify-track-delete', function (req, res) {
     },
   })
 })
-// Шлях GET для відображення сторінки, на якій можна додавати треки до плейліст
 
+// Шлях GET для відображення сторінки, на якій можна додавати треки до плейліст
 router.get('/spotify-playlist-add', function (req, res) {
   const playlistId = Number(req.query.playlistId)
 
@@ -268,7 +268,6 @@ router.get('/spotify-playlist-add', function (req, res) {
     data: {
       playlistId: playlist.id,
       tracks: allTracks,
-      // link: `/spotify-playlist-add?playlistId={{playlistId}}&trackId={{id}}`,
     },
   })
 })
@@ -276,6 +275,7 @@ router.get('/spotify-playlist-add', function (req, res) {
 // Шлях POST для додавання треку до плейліста
 router.post('/spotify-playlist-add', function (req, res) {
   const playlistId = Number(req.body.playlistId)
+
   const trackId = Number(req.body.trackId)
 
   const playlist = Playlist.getById(playlistId)
