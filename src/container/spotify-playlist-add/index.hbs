@@ -16,18 +16,24 @@
           <strong class="track__name">{{name}}</strong>
           <em class="track__author">{{author}}</em>
         </div>
-        <a href="/spotify-track-add?playlistId={{playlistId}}&trackId={{id}}" class="add-button">
+        <a href="/spotify-playlist-add?playlistId={{playlistId}}&trackId={{id}}" class="add-button">
           <img src="/svg/add_button.svg"> Додати до плейлиста
         </a>
+
+        <form method="POST" action="/spotify-playlist-add">
+          <input type="hidden" name="playlistId" value="{{../playlistId}}">
+          <input type="hidden" name="trackId"> value="{{id}}"
+          <button type="submit">
+            <img src="/svg/add_button.svg">
+          </button>
+
+        </form>
       </li>
       {{/each}}
     </ul>
   </div>
   {{/with}}
 </main>
-
-
-
 
 {{!
 Цей код містить лише те, що буде виводитись в
