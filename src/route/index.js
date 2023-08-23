@@ -40,7 +40,7 @@ Track.create(
   'https://picsum.photos/100/100',
 )
 Track.create(
-  'Balla Conmigo (Remix)',
+  'Baila Conmigo (Remix)',
   'Selena Gomez',
   'https://picsum.photos/100/100',
 )
@@ -51,7 +51,7 @@ Track.create(
 )
 Track.create(
   'DAKITI',
-  'LUNATIK',
+  'BAD BUNNY & JHAY',
   'https://picsum.photos/100/100',
 )
 Track.create(
@@ -61,10 +61,14 @@ Track.create(
 )
 Track.create(
   'Інша любов',
-  'FACE',
+  'Enleo',
   'https://picsum.photos/100/100',
 )
-
+Track.create(
+  'FACE',
+  'LUNATIK',
+  'https://picsum.photos/100/100',
+)
 console.log(Track.getList())
 
 class Playlist {
@@ -113,6 +117,7 @@ class Playlist {
       (track) => track.id !== trackId,
     )
   }
+
   static findListByValue(name) {
     return this.#list.filter((playlist) =>
       playlist.name
@@ -121,12 +126,38 @@ class Playlist {
     )
   }
 }
-// ================================================================
 
+Playlist.makeMix(Playlist.create('Test'))
+Playlist.makeMix(Playlist.create('Test2'))
+Playlist.makeMix(Playlist.create('Test3'))
+Playlist.makeMix(Playlist.create('My playlist'))
+
+// ================================================================
+router.get('/', function (req, res) {
+  allTracks = Track.getList()
+  console.log(allTracks)
+
+  const allPlaylists = Playlist.getList()
+  console.log(allPlaylists)
+
+  res.render('index', {
+    style: 'index',
+
+    data: {
+      list: allPlaylists.map(({ tracks, ...rest }) => ({
+        ...rest,
+        amount: tracks.length,
+      })),
+    },
+  })
+})
+
+// ====================================================
 // router.get Створює нам один ентпоїнт
 
 // ↙️ тут вводимо шлях (PATH) до сторінки
-router.get('/', function (req, res) {
+
+router.get('/spotify-choose', function (req, res) {
   // res.render генерує нам HTML сторінку
 
   //↙️ cюди вводимо назву файлу з сontainer
@@ -318,5 +349,42 @@ router.post('/spotify-playlist-add', function (req, res) {
   })
 })
 
+//=======================
+router.get('/spotify-search', function (req, res) {
+  const value = ''
+
+  const list = Playlist.findListByValue(value)
+
+  res.render('spotify-search', {
+    style: 'spotify-search',
+
+    data: {
+      list: list.map(({ tracks, ...rest }) => ({
+        ...rest,
+        amount: tracks.length,
+      })),
+      value,
+    },
+  })
+})
+
+router.post('/spotify-search', function (req, res) {
+  const value = req.body.value || ''
+
+  const list = Playlist.findListByValue(value)
+
+  console.log(value)
+
+  res.render('spotify-search', {
+    style: 'spotify-search',
+    data: {
+      list: list.map(({ tracks, ...rest }) => ({
+        ...rest,
+        amount: tracks.length,
+      })),
+      value,
+    },
+  })
+})
 // Підключаємо роутер до бек-енду
 module.exports = router
